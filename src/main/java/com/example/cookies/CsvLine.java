@@ -29,10 +29,9 @@ final class CsvLine {
         if (cookie.isEmpty() || ts.isEmpty())
             throw new IllegalArgumentException("Missing fields: " + line);
 
-        // Header guard: "cookie,timestamp"
+        // Header error check: "cookie,timestamp"
         if (cookie.equalsIgnoreCase("cookie") && ts.equalsIgnoreCase("timestamp")) {
-            // Represent as a special header marker via exception type caller can detect;
-            // Here we throw with a sentinel message and let caller skip.
+            // Here we throw with a message and let caller skip.
             throw new HeaderLine();
         }
 
